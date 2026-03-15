@@ -39,7 +39,7 @@ class GeminiWebSocket:
     async def setup(self) -> None:
         setup_msg: Dict[str, Any] = {
             "setup": {
-                "model": f"models/gemini-2.0-flash-exp",
+                "model": f"models/gemini-2.5-flash-native-audio-dialog",
                 "generation_config": self.config["generation_config"],
                 'system_instruction': {
                     'parts': [{'text': self.persona}], #  "You are a helpful assistant"
