@@ -29,7 +29,7 @@ class GeminiWebSocket:
     async def connect(self) -> None:
         api_key: Optional[str] = os.getenv('GEMINI_API_KEY')
         base_url: str = "wss://generativelanguage.googleapis.com"
-        endpoint: str = "/ws/google.ai.generativelanguage.v1alpha.GenerativeService.BidiGenerateContent"
+        endpoint: str = "/ws/google.ai.generativelanguage.v1beta.GenerativeService.BidiGenerateContent"
         uri: str = f"{base_url}{endpoint}?key={api_key}"
         
         if not self.ws:
@@ -39,7 +39,7 @@ class GeminiWebSocket:
     async def setup(self) -> None:
         setup_msg: Dict[str, Any] = {
             "setup": {
-                "model": f"models/gemini-2.5-flash-native-audio-dialog",
+                "model": f"models/gemini-2.5-flash-native-audio-dialog-latest",
                 "generation_config": self.config["generation_config"],
                 'system_instruction': {
                     'parts': [{'text': self.persona}], #  "You are a helpful assistant"
